@@ -1,0 +1,71 @@
+create table tab1(name varchar(10);
+
+****emp****
+create table emp(emp_no int(10)not null primary key,emp_name varchar(20),street varchar(10),city varchar(10))Engine=innodb;
+
+
+insert into emp values(11,'shashi','vinobnagar','shimogga');
+insert into emp values(12,'harshi','gopala','bhadravathi');
+insert into emp values(13,'vinay','annanagar','gadag');
+insert into emp values(14,'sharath','mrs','sagar');
+insert into emp values(15,'suraj','bus_stand','hubli');
+
+
+*****works1****
+
+create table works1(employee_no int(10) not null,company_name varchar(10),Joining_date date,Designation varchar(20),salary int(10),foreign key works1(employee_no)references emp(emp_no)on update cascade on delete cascade)Engine=innodb;
+
+mysql> insert into works1 values(11,'google',01022009,'bangalore',350);
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> insert into works1 values(12,'wipro',01022008,'mysore',45000);
+Query OK, 1 row affected, 1 warning (0.04 sec)
+
+mysql> insert into works1 values(13,'tesco',01020043,'mangalore',55000);
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> insert into works1 values(14,'tcs',01020058,'sirisi',65000);
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> insert into works1 values(15,'infosys',01020565,'darwad',75000);
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+
+
+
+**company**
+
+
+ create table company(employe_no int(10) not null,city varchar(20),foreign key company(employe_no) references emp(emp_no)on update cascade on delete cascade)Engine=innodb;
+
+insert into company values(11,'mandya');
+insert into company values(12,'maddur'); 
+insert into company values(13,'madurai');
+insert into company values(14,'koppa'); 
+insert into company values(15,'shikaripura');
+
+
+***MANAGER***
+
+mysql> create table manager(empe_no int(10) not null,manager_name varchar(18),manager_no int (20),foreign key manager (empe_no)references emp(emp_no)on update cascade on delete cascade)Engine=innodb;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into manager values(11,'aaa');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into manager values(11,'aaa',345);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into manager values(12,'bbb',678);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into manager values(13,'ccc',688);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into manager values(14,'cec',689);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into manager values(15,'coc',889);
+Query OK, 1 row affected (0.04 sec)
+
+
+
